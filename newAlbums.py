@@ -66,7 +66,6 @@ for daytext in upcomingText:
     launchDayText = findall(dayRegex, daytext.encode(encoding='UTF-8'))
     launchDay = transform(launchDayText[0].decode("utf-8"))
     if today <= launchDay <= today + timedelta(days=DAYSTOWATCH):
-        Notify.init("newAlbums")
         if launchDay > today + timedelta(days=DAYSTOWATCH):
             break
         artistText = findall(artistRegex, daytext.encode(encoding='UTF-8'))
