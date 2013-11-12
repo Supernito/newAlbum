@@ -22,7 +22,7 @@ from urllib.request import urlopen, Request
 from datetime import date, timedelta
 from gi.repository import Notify
 
-RYMUSER = "SomeUser"
+RYMUSER = "killa119"
 DAYSTOWATCH = 15
 #Time showing the alert in seconds
 SHOWTIME = 20
@@ -72,8 +72,9 @@ for daytext in upcomingText:
         artistText = findall(artistRegex, daytext.encode(encoding='UTF-8'))
         albumText = findall(albumRegex, daytext.encode(encoding='UTF-8'))
         resultText = ""
-        for i in range(len(artistText) - 1):
+        for i in range(len(artistText)):
             resultText = resultText + artistText[i].decode("utf-8") + "\n" + albumText[i].decode("utf-8") + "\n\n"
+        Notify.init("newAlbums")
         notification = Notify.Notification.new(str(launchDay), resultText, None)
         notification.set_urgency(urgency=Notify.Urgency.NORMAL)
         notification.set_timeout(SHOWTIME * 1000)
